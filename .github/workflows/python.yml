@@ -48,6 +48,7 @@ jobs:
           dbus-daemon
           dbus-devel
           dbus-tools
+          device-mapper-devel
           device-mapper-persistent-data
           libblkid-devel
           make
@@ -114,6 +115,7 @@ jobs:
           dbus-daemon
           dbus-devel
           dbus-tools
+          device-mapper-devel
           device-mapper-persistent-data
           libblkid-devel
           make

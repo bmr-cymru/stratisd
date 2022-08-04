@@ -68,6 +68,7 @@ jobs:
           libblkid-dev
           libcryptsetup-dev
           libdbus-1-dev
+          libdevmapper-dev
           libsystemd-dev
           libudev-dev
           make
@@ -106,6 +107,7 @@ jobs:
           libblkid-dev
           libcryptsetup-dev
           libdbus-1-dev
+          libdevmapper-dev
           libsystemd-dev
           libudev-dev
           make

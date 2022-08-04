@@ -70,6 +70,7 @@ jobs:
           cryptsetup-devel
           dbus-devel
           device-mapper-persistent-data
+          device-mapper-devel
           libblkid-devel
           make
           systemd-devel
@@ -102,8 +103,9 @@ jobs:
           clang
           cryptsetup-devel
           curl
-          device-mapper-persistent-data
           dbus-devel
+          device-mapper-devel
+          device-mapper-persistent-data
           libblkid-devel
           make
           systemd-devel

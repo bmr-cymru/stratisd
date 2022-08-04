@@ -39,6 +39,7 @@ jobs:
           curl
           cryptsetup-devel
           dbus-devel
+          device-mapper-devel
           libblkid-devel
           make
           openssl-devel
@@ -73,6 +74,7 @@ jobs:
           curl
           cryptsetup-devel
           dbus-devel
+          device-mapper-devel
           git
           libblkid-devel
           make
@@ -117,6 +119,7 @@ jobs:
           curl
           cryptsetup-devel
           dbus-devel
+          device-mapper-devel
           libblkid-devel
           make
           openssl-devel
@@ -153,6 +156,7 @@ jobs:
           dbus-daemon
           dbus-tools
           dbus-devel
+          device-mapper-devel
           libblkid-devel
           git
           make
@@ -219,6 +223,7 @@ jobs:
           dbus-daemon
           dbus-devel
           dbus-tools
+          device-mapper-devel
           device-mapper-persistent-data
           libblkid-devel
           make

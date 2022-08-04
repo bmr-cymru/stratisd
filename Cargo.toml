@@ -49,7 +49,7 @@ clap = "3.1.9"
 crc = "2.0.0"
 crossbeam = "0.8.0"
 data-encoding = "2.3.0"
-devicemapper = "0.32.2"
+devicemapper = "0.32.1"
 either = "1.6.1"
 env_logger="0.9.0"
 futures = "0.3.11"
@@ -70,6 +70,11 @@ serde_derive = "1.0.119"
 serde_json = "1.0.50"
 sha2 = "0.10.1"
 tempfile = "3.0.2"
+
+[dependencies.devicemapper]
+version = "0.32.1"
+git = "https://github.com/bmr-cymru/devicemapper-rs"
+branch = "bmr-udev-sync"
 
 [dependencies.chrono]
 version = "0.4.20"

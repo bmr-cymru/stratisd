@@ -1170,6 +1170,7 @@ mod tests {
                 _ => panic!("thin pool status should be back to working"),
             }
         }
+        udev_settle().unwrap();
     }
 
     #[test]

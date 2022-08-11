@@ -890,6 +890,7 @@ mod test {
 
         test_async!(engine.start_pool(uuid, Some(unlock_method)))?;
         test_async!(engine.destroy_pool(uuid))?;
+        cmd::udev_settle()?;
         engine.teardown()?;
 
         Ok(())

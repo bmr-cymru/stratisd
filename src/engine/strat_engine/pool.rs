@@ -1098,7 +1098,7 @@ mod tests {
 
         pool.add_blockdevs(uuid, name, data_paths, BlockDevTier::Data)
             .unwrap();
-
+        udev_settle().unwrap();
         pool.teardown().unwrap();
     }
 

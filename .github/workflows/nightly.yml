@@ -193,7 +193,7 @@ jobs:
           --print-address
       - name: Run stratis-cli tests
         run: >
-          RUST_LOG=stratisd=debug
+          RUST_LOG=trace
           STRATISD=/usr/libexec/stratisd
           PYTHONPATH=./src
           make dbus-tests
@@ -257,7 +257,7 @@ jobs:
           --print-address
       - name: Tests on ${{ matrix.image }} using Rust ${{ matrix.toolchain }}
         run: >
-          RUST_LOG=stratisd=debug
+          RUST_LOG=trace
           STRATISD=/usr/libexec/stratisd
           STRATIS_PREDICT_USAGE=/usr/bin/stratis-predict-usage
           PYTHONPATH=./src

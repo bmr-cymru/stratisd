@@ -81,7 +81,7 @@ jobs:
           --print-address
       - name: Tests on ${{ matrix.image }} using Rust ${{ matrix.toolchain }}
         run: >
-          RUST_LOG=stratisd=debug
+          RUST_LOG=trace
           STRATISD=/usr/libexec/stratisd
           PYTHONPATH=./src
           make udev-tests
@@ -149,7 +149,7 @@ jobs:
       - name: Run D-Bus based bind tests
         run: >
           TANG_URL=tang
-          RUST_LOG=stratisd=debug
+          RUST_LOG=trace
           STRATISD=/usr/libexec/stratisd
           PYTHONPATH=./src
           make -f Makefile tang-tests

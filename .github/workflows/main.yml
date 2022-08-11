@@ -63,7 +63,7 @@ jobs:
           # MANDATORY CHECKS USING CURRENT DEVELOPMENT COMPILER
           - task: >-
               TANG_URL=tang
-              RUST_LOG=stratisd=debug
+              RUST_LOG=trace
               make -f Makefile test-clevis-loop
             toolchain: 1.64.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
             components: cargo
@@ -156,7 +156,7 @@ jobs:
           --print-address
       - name: Run stratis-cli tests
         run: >
-          RUST_LOG=stratisd=debug
+          RUST_LOG=trace
           STRATISD=/usr/libexec/stratisd
           PYTHONPATH=./src
           make dbus-tests

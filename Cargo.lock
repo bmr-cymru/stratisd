@@ -352,12 +352,12 @@ dependencies = [
 
 [[package]]
 name = "devicemapper"
-version = "0.32.1"
-source = "git+https://github.com/bmr-cymru/devicemapper-rs?branch=bmr-udev-sync#7ed6bdfda61ef65a85e05e360baed6f80ca04662"
+version = "0.32.2"
+source = "git+https://github.com/bmr-cymru/devicemapper-rs?branch=bmr-udev-sync#3320b618ceed645faaadd23629545ad68e8b5863"
 dependencies = [
  "bitflags",
  "devicemapper-sys",
- "env_logger 0.9.0",
+ "env_logger",
  "lazy_static",
  "libc",
  "log",
@@ -371,7 +371,7 @@ dependencies = [
 [[package]]
 name = "devicemapper-sys"
 version = "0.1.3"
-source = "git+https://github.com/bmr-cymru/devicemapper-rs?branch=bmr-udev-sync#7ed6bdfda61ef65a85e05e360baed6f80ca04662"
+source = "git+https://github.com/bmr-cymru/devicemapper-rs?branch=bmr-udev-sync#3320b618ceed645faaadd23629545ad68e8b5863"
 dependencies = [
  "bindgen",
  "nix 0.24.1",

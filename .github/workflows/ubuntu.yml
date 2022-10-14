@@ -90,39 +90,33 @@ jobs:
             toolchain: 1.64.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
             components: cargo
     runs-on: ubuntu-20.04
-    container:
-      image: ubuntu:jammy
-      options: --privileged -v /dev:/dev
     steps:
       - uses: actions/checkout@v3
-      - name: Install dependencies for Ubuntu
-        run: apt-get -q update
-      - name: Install dependencies for Ubuntu
-        run: >
-          DEBIAN_FRONTEND=noninteractive
-          apt-get install -y
-          asciidoc
-          clang
-          curl
-          libblkid-dev
-          libcryptsetup-dev
-          libdbus-1-dev
-          libdevmapper-dev
-          libsystemd-dev
-          libudev-dev
-          make
-          systemd
-          thin-provisioning-tools
-          udev
-          xfsprogs
-      - uses: actions-rs/toolchain@v1
+      - name: Stop host udevd
+        run: |
+          sudo systemctl stop systemd-udevd
+          sudo systemctl disable systemd-udevd-kernel.socket
+          sudo systemctl disable systemd-udevd-control.socket
+      - uses: bmr-cymru/fedora-stratisd-composite-action@v1
         with:
+          image: ubuntu:jammy
           components: ${{ matrix.components }}
           toolchain: ${{ matrix.toolchain }}
-          override: true
-      - name: Install all necessary Stratis files
-        run: make -f Makefile build-and-install
-      - name: Start udev
-        run: /usr/lib/systemd/systemd-udevd &
-      - name: Test ${{ matrix.task }} on ${{ matrix.toolchain }} toolchain
-        run: ${{ matrix.task }}
+          task: ${{ matrix.task }}
+          deps: >
+            apt-get -q update;
+            apt-get install -y
+            asciidoc
+            clang
+            curl
+            libblkid-dev
+            libcryptsetup-dev
+            libdbus-1-dev
+            libdevmapper-dev
+            libsystemd-dev
+            libudev-dev
+            make
+            systemd
+            thin-provisioning-tools
+            udev
+            xfsprogs

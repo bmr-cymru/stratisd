@@ -91,34 +91,30 @@ jobs:
             toolchain: 1.64.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
             components: cargo
     runs-on: ubuntu-20.04
-    container:
-      image: fedora:36  # CURRENT DEVELOPMENT ENVIRONMENT
-      options: --privileged -v /dev:/dev
     steps:
       - uses: actions/checkout@v3
-      - name: Install dependencies for Fedora
-        run: >
-          dnf install -y
-          asciidoc
-          clang
-          cryptsetup-devel
-          curl
-          dbus-devel
-          device-mapper-devel
-          device-mapper-persistent-data
-          libblkid-devel
-          make
-          systemd-devel
-          systemd-udev
-          xfsprogs
-      - uses: actions-rs/toolchain@v1
+      - name: Stop host udevd
+        run: |
+          sudo systemctl stop systemd-udevd
+          sudo systemctl disable systemd-udevd-kernel.socket
+          sudo systemctl disable systemd-udevd-control.socket
+      - uses: bmr-cymru/fedora-stratisd-composite-action@v1
         with:
+          image: fedora:36
           components: ${{ matrix.components }}
           toolchain: ${{ matrix.toolchain }}
-          override: true
-      - name: Install all necessary Stratis files
-        run: make -f Makefile build-and-install
-      - name: Start udev
-        run: /usr/lib/systemd/systemd-udevd &
-      - name: Test ${{ matrix.task }} on ${{ matrix.toolchain }} toolchain
-        run: ${{ matrix.task }}
+          task: ${{ matrix.task }}
+          deps: >
+            dnf install -y
+            asciidoc
+            clang
+            cryptsetup-devel
+            curl
+            device-mapper-persistent-data
+            device-mapper-devel
+            dbus-devel
+            libblkid-devel
+            make
+            systemd-devel
+            systemd-udev
+            xfsprogs
